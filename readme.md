@@ -1,15 +1,35 @@
 # Craft CMS mixed with Foundation Magic
 
 ## Installation
-1.
+
+#### get the git.
+
     git clone
 
-2.
+#### add the stuff.
+
     npm install
 
-3. Install Craft CMS in your project folder
+#### bring in the other bits.
 
-4.
+Install Craft CMS in your project folder
+
+#### start all the bits.
+
     npm run start
 
-5. Love life.
+#### love life.
+
+## npm Commands
+
+#### Run default watch task
+    npm run start
+
+#### Build out the project
+    npm run build
+
+#### Build for production
+    npm run production
+
+###### Note: all needed files are put in /public by default.
+###### You will need to change this in config.yml for production.
