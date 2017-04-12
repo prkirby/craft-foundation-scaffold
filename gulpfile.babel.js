@@ -70,14 +70,8 @@ function server(done) {
   done();
 }
 
-// Reload the browser with BrowserSync
-function reload(done) {
-  browser.reload();
-  done();
-}
-
 // Watch for changes to static assets, pages, Sass, and JavaScript
 function watch() {
-  gulp.watch('src/scss/**/*.scss').on('all', gulp.series(sass, browser.reload));
+  gulp.watch('src/scss/**/*.scss').on('all', gulp.series(sass));
   gulp.watch('src/js/**/*.js').on('all', gulp.series(javascript, browser.reload));
 }
