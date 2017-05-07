@@ -61,3 +61,6 @@ PATHS:
   # Paths to your own project code are here
     - "src/js/!(app).js"
     - "src/js/app.js"
+  # Paths to page specific js, which are not concatenated
+  specificJS:
+    - "src/js/specific/**/*.js"
