@@ -33,3 +33,4 @@ Install Craft CMS in your project folder
 
 ###### Note: all needed files are put in /public by default.
 ###### You will need to change this in config.yml for production.
+###### You may also want to edit the .gitignore file to match it to your project needs.
