@@ -1,8 +1,13 @@
+## Global Ignores ##
 .DS_Store
 node_modules
 npm-debug.log
 *.swp
 
-# Remove these after installing your version of Craft
-craft
-public
+# Craft Storage (cache) [http://buildwithcraft.com/help/craft-storage-gitignore]
+/craft/storage/*
+!/craft/storage/logo/*
+
+## Gulp Builds (Change according to your project) ##
+/public/assets/**/*.js
+/public/assets/**/*.css
