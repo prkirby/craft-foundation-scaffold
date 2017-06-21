@@ -22,7 +22,7 @@ function loadConfig() {
 }
 
 // Build the distribution files by running all of the below tasks
-gulp.task('build', gulp.parallel(sass, javascript));
+gulp.task('build', gulp.parallel(sass, javascript, specificJS));
 
 // Build the site, run the server, and watch for file changes
 gulp.task('default',
@@ -62,6 +62,17 @@ function javascript() {
     .pipe(gulp.dest(PATHS.dist + '/assets/js'));
 }
 
+function specificJS() {
+  return gulp.src(PATHS.specificJS)
+    .pipe($.sourcemaps.init())
+    .pipe($.babel({ignore: ['what-input.js']}))
+    .pipe($.if(PRODUCTION, $.uglify()
+      .on('error', e => { console.log(e); })
+    ))
+    .pipe($.if(!PRODUCTION, $.sourcemaps.write()))
+    .pipe(gulp.dest(PATHS.dist + '/assets/js'));
+}
+
 // Start a server with BrowserSync to preview the site in
 function server(done) {
   browser.init({
@@ -72,6 +83,7 @@ function server(done) {
 
 // Watch for changes to static assets, pages, Sass, and JavaScript
 function watch() {
-  gulp.watch('src/scss/**/*.scss').on('all', gulp.series(sass));
+  gulp.watch('src/scss/**/*.scss').on('all', sass);
+  gulp.watch(PATHS.specificJS).on('all', gulp.series(specificJS, browser.reload));
   gulp.watch('src/js/**/*.js').on('all', gulp.series(javascript, browser.reload));
 }
